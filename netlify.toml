@@ -1,0 +1,18 @@
+# Netlify configuration for kizuna-proposal (static site)
+# GitHub 連携でこのリポジトリを Import すれば、push のたびに自動デプロイされます。
+# ビルド工程は不要（素の HTML + mp3）なので publish はリポジトリのルートを指定します。
+
+[build]
+  publish = "."
+  command = ""
+
+# mp3 はキャッシュ可、HTML は常に最新を取得させる
+[[headers]]
+  for = "/*.mp3"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-cache"
